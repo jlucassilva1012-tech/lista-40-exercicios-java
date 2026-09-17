@@ -1,1 +1,35 @@
+import java.util.Scanner;
 
+public class Ex40 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String senhaCorreta = "1234";
+        String senha;
+
+        int tentativas = 0;
+        boolean entrou = false;
+
+        do {
+            System.out.print("Digite a senha: ");
+            senha = sc.nextLine();
+
+            tentativas++;
+
+            if (senha.equals(senhaCorreta)) {
+                System.out.println("Acesso permitido!");
+                entrou = true;
+            } else {
+                if (tentativas < 3) {
+                    System.out.println("Senha incorreta.");
+                    System.out.println("Tentativas restantes: " + (3 - tentativas));
+                }
+            }
+
+        } while (!entrou && tentativas < 3);
+
+        if (!entrou) {
+            System.out.println("Acesso bloqueado!");
+        }
+    }
+}
